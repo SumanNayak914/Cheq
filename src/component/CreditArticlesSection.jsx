@@ -21,35 +21,36 @@ const articles = [
 
 const CreditArticlesSection = () => {
   return (
-    <section className="w-full py-16 px-4 md:px-10 lg:px-20 bg-white">
+    <section className="w-full py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-semibold mb-12"> 
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12">
           Learn more about{" "}
           <span className="text-red-400 font-bold">credit</span>
         </h2>
 
-        {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 h-[500px]">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {articles.map((item, index) => (
             <div
               key={index}
-              className="rounded-2xl p-4 md:p-6 overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-all bg-white"
+              className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col"
             >
               {/* Image */}
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-56 object-cover rounded-2xl hover:shadow-[0_19px_38px_rgba(0,0,0,0.3),_0_15px_12px_rgba(0,0,0,0.22)] z-40 duration-300"
-                
+                className="w-full h-40 sm:h-48 md:h-56 object-cover rounded-t-2xl transition-shadow duration-300"
               />
 
               {/* Content */}
-              <div className="p-5 space-y-3 text-left">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+              <div className="p-4 sm:p-5 space-y-2 sm:space-y-3 text-left flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">{item.desc}</p>
+                </div>
 
                 <div className="flex items-center text-gray-400 text-sm pt-2">
                   <svg

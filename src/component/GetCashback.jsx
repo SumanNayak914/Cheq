@@ -4,7 +4,7 @@ import rewards from "../assets/1image.avif"; // phone image with gift cards
 
 const GetCashback = () => {
   return (
-    <section className="relative py-16 px-4 bg-gradient-to-r from-green-50 to-white overflow-hidden">
+    <section className="relative w-[80%] mx-auto py-16 px-4 bg-amber-300 from-green-50 to-white overflow-hidden rounded-[6%]">
       {/* Floating coin (optional) */}
       <img
         src={coin}
@@ -12,14 +12,14 @@ const GetCashback = () => {
         className="absolute top-4 left-4 w-16 animate-float"
       />
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
-        {/* Left: Tilted Image */}
-        <div className="w-full md:w-1/2 flex justify-center">
+      {/* Main Content - Adjusted container width here */}
+      <div className="max-w-4xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+        {/* Left: Tilted Image - Added min-h-[400px] */}
+        <div className="w-full md:w-1/2 flex justify-center relative min-h-[400px] md:min-h-[500px]"> {/* Adjusted min-heights */}
           <img
             src={rewards}
             alt="Tilted rewards"
-            className="w-[90%] max-w-sm transform -rotate-[10deg] drop-shadow-2xl"
+            className="absolute w-[80%] max-w-[300px] transform -rotate-[10deg] drop-shadow-2xl top-20"
           />
         </div>
 
@@ -39,4 +39,3 @@ const GetCashback = () => {
 };
 
 export default GetCashback;
-

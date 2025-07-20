@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import shield from "../assets/shield.png"; // Assuming shield.png is your correct shield image
+import shield from "../assets/shield.png"; // Ensure this is the correct path
 
 const CheqHero = () => {
   const [animationKey, setAnimationKey] = useState(0);
@@ -8,29 +8,27 @@ const CheqHero = () => {
   useEffect(() => {
     const loop = setInterval(() => {
       setAnimationKey((prev) => prev + 1);
-    }, 6000); // full animation cycle duration
+    }, 6000);
 
     return () => clearInterval(loop);
   }, []);
 
   return (
-    <section className="min-h-screen w-[80%] bg-[#DFF9EC]  font-sans container mx-auto rounded-[7%] flex items-center justify-center mt-[10%] ">
-      <div className="w-full max-w-4xl p-6 grid grid-cols-1 md:grid-cols-2 md:mx-auto items-center justify-center ">
-        {/* Card Animation Section */}
-        <div className="mx-auto h-[510px] w-auto flex justify-center items-center">
-          <div>
-            <AnimatePresence mode="wait">
-              <AnimatedCard key={animationKey} />
-            </AnimatePresence>
-          </div>
+    <section className="min-h-screen w-[80%] bg-[#DFF9EC] font-sans rounded-[7%] flex items-center justify-center px-4 md:px-12 py-16 mx-auto">
+      <div className="w-full  mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
+        {/* Card Section */}
+        <div className="flex justify-center">
+          <AnimatePresence mode="wait">
+            <AnimatedCard key={animationKey} />
+          </AnimatePresence>
         </div>
 
-        {/* Right Side Text */}
-        <div className="min-w-sm h-auto  p-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+        {/* Text Section */}
+        <div className="text-center md:text-left px-2 md:px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
             Never miss a due date with CheQ Safe
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-700 text-base sm:text-lg">
             No more missed due dates. Automatic reminders with real-time updates
             on due amounts ensure timely payments.
           </p>
@@ -40,7 +38,6 @@ const CheqHero = () => {
   );
 };
 
-// Data for the cards to display
 const paymentCardsData = [
   { bank: "HDFC Regalia", lastFour: "3423", amount: "₹30,000" },
   { bank: "Axis My Zone", lastFour: "6879", amount: "₹30,000" },
@@ -50,76 +47,57 @@ const paymentCardsData = [
 const AnimatedCard = () => {
   const [showCards, setShowCards] = useState(false);
   const [showBillFound, setShowBillFound] = useState(true);
+  const [showRipple, setShowRipple] = useState(false);
 
   useEffect(() => {
-    // Hide "Bill found" after shield animation
-    const hideBillFoundTimeout = setTimeout(() => {
+    const hideBillTimeout = setTimeout(() => {
       setShowBillFound(false);
-    }, 1500); // Should align with shield animation duration
+    }, 1500);
+
+    const rippleTimeout = setTimeout(() => {
+      setShowRipple(true);
+    }, 1600);
 
     const showCardsTimeout = setTimeout(() => {
       setShowCards(true);
-    }, 1800); // show cards after shield finishes animation
+    }, 1800);
 
     return () => {
-      clearTimeout(hideBillFoundTimeout);
+      clearTimeout(hideBillTimeout);
       clearTimeout(showCardsTimeout);
+      clearTimeout(rippleTimeout);
     };
   }, []);
 
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-xl relative overflow-hidden p-6 min-h-[380px] w-[320px] flex flex-col items-center justify-center"
+      className="relative bg-white rounded-2xl shadow-xl p-6 min-h-[380px] w-[90vw] max-w-xs sm:max-w-sm flex flex-col items-center justify-center overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Shield and Border Animation Container */}
+      {/* Shield */}
       <motion.div
         className="absolute z-10"
-        style={{ width: 70, height: 70, top: "20px", left: "50%", x: "-50%" }} // Adjusted size to give room for border
-        initial={{
-          scale: 3,
-          top: "50%",
-          y: "-50%",
-        }}
-        animate={{
-          scale: 1,
-          top: "20px",
-          y: "0%",
-        }}
+        style={{ width: 70, height: 70, top: "20px", left: "50%", x: "-50%" }}
+        initial={{ scale: 3, top: "50%", y: "-50%" }}
+        animate={{ scale: 1, top: "20px", y: "0%" }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
       >
-        {/* Shield Image */}
-        <img
-          src={shield}
-          alt="Shield"
-          className="w-full h-full object-contain"
-        />
+        <img src={shield} alt="Shield" className="w-full h-full object-contain" />
 
-        {/* Animated Border */}
-        <motion.div
-          className="absolute inset-0 border-2 border-green-500 rounded-full" // Added rounded-full for circular border
-          initial={{
-            clipPath: "inset(0% 100% 100% 0%)", // Start hidden (top-right to bottom-left)
-          }}
-          animate={{
-            clipPath: [
-              "inset(0% 100% 100% 0%)", // Start (hidden)
-              "inset(0% 0% 100% 0%)", // Draw top
-              "inset(0% 0% 0% 0%)", // Draw right, then bottom, then left
-            ],
-          }}
-          transition={{
-            duration: 1, // Total duration for border drawing
-            delay: 0.5, // Start border animation after shield starts
-            ease: "linear",
-            times: [0, 0.33, 1], // Control timing for each clipPath step
-          }}
-        />
+        {/* Ripple Effect */}
+        {showRipple && (
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-green-500"
+            initial={{ scale: 1, opacity: 1 }}
+            animate={{ scale: 2.5, opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          />
+        )}
       </motion.div>
 
-      {/* Bill Found text */}
+      {/* Bill Found */}
       {showBillFound && (
         <motion.div
           className="absolute top-20 flex items-center bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold z-20"
@@ -131,10 +109,10 @@ const AnimatedCard = () => {
         </motion.div>
       )}
 
-      {/* Card List Animation */}
+      {/* Cards */}
       {showCards && (
         <motion.div
-          className="mt-24 space-y-4 z-0 w-full px-4"
+          className="mt-24 space-y-4 w-full z-0"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
