@@ -4,7 +4,7 @@ import rewards from "../assets/1image.avif"; // phone image with gift cards
 
 const GetCashback = () => {
   return (
-    <section className="relative w-[80%] mx-auto py-16 px-4 bg-amber-300 from-green-50 to-white overflow-hidden rounded-[6%]">
+    <section className="relative w-[365px] md:w-[80%] mx-auto py-16 px-4 bg-amber-300 from-green-50 to-white overflow-hidden  rounded-[40px]">
       {/* Floating coin (optional) */}
       <img
         src={coin}

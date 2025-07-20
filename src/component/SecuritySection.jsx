@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-
+import icici from "../assets/bankslogo/icici.svg"
+import axis from "../assets/bankslogo/axis.svg"
+import cicra from "../assets/bankslogo/cicra.svg"
+import pcidss from "../assets/bankslogo/pcidss.svg"
 const SecureSection = () => {
   const [showRipples, setShowRipples] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);
@@ -75,8 +78,8 @@ const SecureSection = () => {
           <div className="space-y-4 text-center md:text-left">
             <h4 className="text-sm text-gray-600 uppercase font-medium">Security Partners</h4>
             <div className="flex gap-4 justify-center md:justify-start">
-              <img src="/pci-logo.png" alt="PCI DSS" className="h-10 bg-white px-3 py-2 rounded-lg shadow-md border" />
-              <img src="/iso-logo.png" alt="ISO" className="h-10 bg-white px-3 py-2 rounded-lg shadow-md border" />
+              <img src={pcidss}alt="PCI DSS" className="h-20 bg-[#F5F5F5]  rounded-lg shadow-md " />
+              <img src={cicra} alt="ISO" className="h-20 bg-[#F5F5F5]   rounded-lg shadow-md " />
             </div>
           </div>
 
@@ -84,8 +87,8 @@ const SecureSection = () => {
           <div className="space-y-4 text-center md:text-right">
             <h4 className="text-sm text-gray-600 uppercase font-medium">Bank Partners</h4>
             <div className="flex gap-4 justify-center md:justify-end">
-              <img src="/axis-bank-logo.png" alt="Axis Bank" className="h-10 bg-white px-3 py-2 rounded-lg shadow-md border" />
-              <img src="/icici-logo.png" alt="ICICI Bank" className="h-10 bg-white px-3 py-2 rounded-lg shadow-md border" />
+              <img src={axis} alt="Axis Bank" className="h-20 bg-[#F5F5F5]  rounded-lg shadow-md " />
+              <img src={icici} alt="ICICI Bank" className="h-20 bg-[#F5F5F5]  rounded-lg shadow-md " />
             </div>
           </div>
         </div>
@@ -97,13 +100,10 @@ const SecureSection = () => {
 
         {/* Bitrocket Box */}
         <div className="mt-10 flex justify-center w-full px-4 sm:px-6 lg:px-0">
-          <div className="relative bg-[#f9f7f6] rounded-3xl p-4 sm:p-6 md:p-8 shadow-inner max-w-[90%] sm:max-w-[70%] md:max-w-[500px]">
-            <div className="bg-white rounded-2xl px-6 py-4 sm:px-10 sm:py-6 flex flex-col items-center shadow-md text-center">
-              <p className="text-lg sm:text-xl md:text-2xl font-bold text-black">Bitrocket</p>
-              <div className="flex items-center gap-1 mt-1 text-sm sm:text-base text-gray-700">
-                <span>by</span>
-                <img src="/cheq-logo.svg" alt="CheQ" className="h-4 sm:h-5 object-contain" />
-              </div>
+          <div className="relative bg-[#f9f7f6] rounded-[32px] p-10 sm:p-8 md:p-10 shadow-inner max-w-[90%] sm:max-w-[70%] md:max-w-[500px]">
+            <div className="bg-white rounded-[32px] px-6 py-4 sm:px-10 sm:py-6 flex flex-col items-center shadow-md text-center hover:scale-105 duration-200 ">
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-black p-6">Bitrocket</p>
+             
             </div>
           </div>
         </div>

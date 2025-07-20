@@ -11,7 +11,7 @@ import SecuritySection from '../component/SecuritySection'
 const Home = () => {
     return (
        <>
-       <div>
+       <div >
        <HeroSection/>
        <GetCashback/>
        <BrandVouchers/>

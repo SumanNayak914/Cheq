@@ -59,7 +59,7 @@ const PayTogether = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-green-100 font-sans overflow-hidden w-[80%] mx-auto rounded-[7%]">
+    <div className="min-h-screen bg-green-100 font-sans overflow-hidden w-[80%] mx-auto rounded-[55px]">
       {/* 1️⃣ Section: Card + Button */}
       <section className="w-full py-20 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
