@@ -20,6 +20,7 @@ const Home = () => {
        <SecuritySection/>
        <CreditArticlesSection/>
        <NewsSection/>
+       
        </div>
        </>
         
