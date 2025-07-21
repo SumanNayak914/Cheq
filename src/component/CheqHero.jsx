@@ -14,7 +14,7 @@ const CheqHero = () => {
   }, []);
 
   return (
-    <section className="min-h-screen w-[80%] bg-[#DFF9EC] font-sans rounded-[7%] flex items-center justify-center px-4 md:px-12 py-16 mx-auto">
+    <section className="min-h-screen w-[90vw] md:w-[80vw] bg-[#DFF9EC] font-sans rounded-[36px] flex items-center justify-center px-4 md:px-12 py-16 mx-auto mt-10">
       <div className="w-full  mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
         {/* Card Section */}
         <div className="flex justify-center">

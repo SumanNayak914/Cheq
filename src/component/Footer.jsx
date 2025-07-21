@@ -1,4 +1,9 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import qrCode from "../assets/fotter/qr.avif"
+import tcap from "../assets/fotter/3one4.avif"
+import vh from "../assets/fotter/vh.avif"
+import multiply from "../assets/fotter/mu.avif"
+import ma from "../assets/fotter/ma.avif"
 
 const Footer = () => {
   return (
@@ -7,10 +12,10 @@ const Footer = () => {
 
         {/* Logo + QR + Contact */}
         <div className="space-y-4">
-          <img src="/logo.png" alt="CheQ Logo" className="h-8" />
+          <img src={qrCode} alt="CheQ Logo" className="h-8" />
           <p className="text-sm text-gray-600">Smarter way to pay credit card bills</p>
           <p className="text-xs text-gray-500">SCAN TO DOWNLOAD APP</p>
-          <img src="/qr.png" alt="QR Code" className="h-24 w-24" />
+          <img src={qrCode} alt="QR Code" className="h-24 w-24" />
           <div className="text-sm text-gray-600 mt-4 leading-relaxed">
             <p className="font-medium">Contact Us</p>
             <p>Corporate Office: Building A, Bhive workspace, AKR Tech Park, Krishna Reddy Industrial Area, Garvebhavipalya, Bangalore - 560068</p>
@@ -36,10 +41,10 @@ const Footer = () => {
         <div>
           <h4 className="text-gray-800 font-semibold mb-4">Backed by the Best</h4>
           <div className="grid grid-cols-2 gap-4">
-            <img src="/tcap.png" alt="3one4 Capital" className="h-10 object-contain" />
-            <img src="/vh.png" alt="Venture Highway" className="h-10 object-contain" />
-            <img src="/multiply.png" alt="Multiply Ventures" className="h-10 object-contain" />
-            <div className="text-xs text-gray-500">+ Marquee Angel Investors</div>
+            <img src={tcap} alt="3one4 Capital" className="h-10 object-contain" />
+            <img src={vh} alt="Venture Highway" className="h-10 object-contain" />
+            <img src={multiply} alt="Multiply Ventures" className="h-10 object-contain" />
+             <img src={ma} alt="Multiply Ventures" className="h-10 object-contain" />
           </div>
         </div>
 
@@ -55,7 +60,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="bg-white border border-gray-300 rounded-xl p-4 flex flex-col items-center">
-            <img src="/qr.png" alt="QR Right" className="h-24 w-24" />
+            <img src={qrCode} alt="QR Right" className="h-24 w-24" />
             <p className="mt-2 text-sm font-medium text-gray-700">SCAN TO DOWNLOAD</p>
             <p className="text-xs text-gray-400">CHEQ NOW</p>
           </div>

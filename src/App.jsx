@@ -3,18 +3,24 @@ import Home from "./pages/Home";
 import About from "./component/About";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
+import Career from "./pages/Career";
+import NotFound from "./pages/NotFound";
 
 export const App = () => {
-  const urlPath = useLocation();
-  const path = urlPath.pathname === "/";
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   return (
     <>
-      {path && <Header />}
+      {isHomePage && <Header />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/career" element={<Career />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+
       <Footer />
     </>
   );

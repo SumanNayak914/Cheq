@@ -157,3 +157,68 @@ font-family: "Poppins", sans-serif;
   animation: phoneWobbleAnimation 1s ease-in-out forwards; /* 1s duration, ease-in-out, runs once, stays at 100% state */
   transform-origin: center center; /* Ensures rotation is around the center */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* src/html.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.animated-element {
+  position: absolute;
+  z-index: 0;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+  
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 50%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  transition: opacity 1s ease-out, transform 1s ease-out, z-index 0s 0.5s;
+}
+
+.animated-element.is-active {
+  z-index: 2;
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(20deg);
+  transition: opacity 1s ease-out, transform 1s ease-out, z-index 0s;
+}

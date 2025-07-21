@@ -1,6 +1,5 @@
 import DoubleMarquee from "./DoubleMarquee";
 
-
 const brands = [
   { name: "Zingbus", logo: "/assets/zingbus.png", bg: "bg-[#F3F2FF]" },
   { name: "Domino's", logo: "/assets/dominos.png", bg: "bg-[#F9F9F9]" },
@@ -13,23 +12,24 @@ const brands = [
 
 const BrandVouchers = () => {
   return (
-    <section className="py-16 px-4 bg-white text-center">
+    <section className="py-8 px-3 sm:py-12 sm:px-4 bg-white text-center">
       {/* Headings */}
-      <div className="mb-12">
-        <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
+      <div className="mb-6 sm:mb-12">
+        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-900 leading-snug">
           <span className="text-brand">Exclusive Vouchers</span> <br />
           from Premium Brands
         </h2>
       </div>
 
-<DoubleMarquee/>
-      {/* Bottom CTA (Optional) */}
-      <div className="mt-12 max-w-4xl mx-auto px-6 py-4 border rounded-2xl text-sm flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
-        <p>
+      <DoubleMarquee />
+
+      {/* CTA Box */}
+      <div className="mt-10 sm:mt-12 max-w-3xl mx-auto px-4 py-4 border rounded-xl text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-sm text-left">
+        <p className="text-[15px] leading-snug">
           <span className="font-semibold text-gray-700">Got a brand people love?</span><br />
           Partner with CheQ. Elevate your brand's visibility among our growing user base.
         </p>
-        <button className="bg-brand text-white px-6 py-2 rounded-md font-semibold">
+        <button className="bg-brand text-white px-4 py-2 rounded-md font-semibold w-full sm:w-auto text-sm">
           PARTNER WITH US
         </button>
       </div>
