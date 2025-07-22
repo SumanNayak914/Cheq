@@ -9,6 +9,7 @@ const SecureSection = () => {
   const [showRipples, setShowRipples] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);
 
+
   useEffect(() => {
     const loop = setInterval(() => {
       setShowRipples(false);
@@ -29,10 +30,12 @@ const SecureSection = () => {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-10">
         
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-semibold">
+        <motion.h2 className="text-3xl md:text-4xl font-semibold"  initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1 ,ease: "linear"}}>
           <span className="text-green-500 font-bold">100% secure</span>{" "}
           <span className="text-black">and encrypted</span>
-        </h2>
+        </motion.h2>
 
         {/* Shield with horizontal lines */}
         <div className="w-full flex items-center justify-center gap-4">
@@ -94,9 +97,12 @@ const SecureSection = () => {
         </div>
 
         {/* Lending Services Text */}
-        <h3 className="pt-14 text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
-          <span className="text-green-600">Lending</span> services via
-        </h3>
+        <motion.h3 className="pt-14 text-2xl sm:text-3xl lg:text-4xl font-bold text-center " initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1 , ease: "linear"}}>
+          <span className="text-green-600">Lending </span>  
+          <span className="text-black">services via </span> 
+        </motion.h3>
 
         {/* Bitrocket Box */}
         <div className="mt-10 flex justify-center w-full px-4 sm:px-6 lg:px-0">

@@ -13,14 +13,7 @@ const brands = [
 const BrandVouchers = () => {
   return (
     <section className="py-8 px-3 sm:py-12 sm:px-4 bg-white text-center">
-      {/* Headings */}
-      <div className="mb-6 sm:mb-12">
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-gray-900 leading-snug">
-          <span className="text-brand">Exclusive Vouchers</span> <br />
-          from Premium Brands
-        </h2>
-      </div>
-
+    
       <DoubleMarquee />
 
       {/* CTA Box */}

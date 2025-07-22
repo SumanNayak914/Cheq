@@ -37,7 +37,7 @@ const DoubleMarquee = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.heading}>
+      <div style={styles.heading} >
         <h2 style={styles.title}>Exclusive Vouchers</h2>
         <p style={styles.subtitle}>from Premium Brands</p>
       </div>
