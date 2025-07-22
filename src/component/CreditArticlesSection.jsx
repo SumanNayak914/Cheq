@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const articles = [
   {
@@ -22,16 +24,43 @@ const articles = [
 ];
 
 const CreditArticlesSection = () => {
+  const headingRef = useRef(null);
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+
+    gsap.fromTo(
+      headingRef.current,
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          end: "top 50%",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   return (
     <section className="w-full py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12">
-          Learn more about{" "}
-          <span className="text-red-400 font-bold">credit</span>
+
+        <h2
+          ref={headingRef}
+          className="text-2xl text-black sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12 opacity-0"
+        >
+          Learn more about
+          <span className="text-red-400 font-bold ml-4">credit</span>
         </h2>
 
-        {/* 🟡 Small Device Slider */}
+        {/*  Small Device Slider */}
         <div className="block sm:hidden overflow-x-auto">
           <div className="flex gap-4 w-max px-1">
             {articles.map((item, index) => (
@@ -79,13 +108,14 @@ const CreditArticlesSection = () => {
           {articles.map((item, index) => (
             <div
               key={index}
-              className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col"
+              className="rounded-2xl p-4 overflow-hidden border border-gray-200 shadow-sm  transition-all bg-white flex flex-col z-10"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-48 md:h-56 object-cover"
+                className="w-full h-48 md:h-56 object-cover rounded-3xl z-50 hover:shadow-2xl duration-150 "
               />
+
               <div className="p-5 space-y-3 text-left flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">
