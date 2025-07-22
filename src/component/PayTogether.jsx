@@ -67,14 +67,14 @@ const PayTogether = () => {
   return (
     <div
       className="min-h-screen bg-green-100 font-sans overflow-hidden rounded-[40px] md:rounded-[60px]
-                  w-[90vw] sm:w-[90vw] md:w-[80vw]  mx-auto"
+                  w-[90vw] sm:w-[90vw] md:w-[80vw] mx-auto"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
         {/* 1️⃣ Section: Card + Button */}
         <section className="w-full py-20">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 ">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Text */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <div className="w-full lg:w-1/2 text-center lg:text-left px-4 sm:px-6 md:px-8 lg:px-0">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ const PayTogether = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-gray-600 text-lg max-w-md "
+                className="text-gray-600 text-lg max-w-md mx-auto lg:mx-0"
               >
                 Consolidate and "Pay Together". Experience hassle-free payments
               </motion.p>
@@ -99,7 +99,7 @@ const PayTogether = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="text-gray-600 text-lg mb-6 max-w-md"
+                className="text-gray-600 text-lg mb-6 max-w-md mx-auto lg:mx-0"
               >
                 for all your credit bills in one go.
               </motion.p>
@@ -107,7 +107,12 @@ const PayTogether = () => {
 
             {/* Cards + Button Section - Corrected for right-side positioning and responsiveness */}
             <div className="w-full lg:w-1/2 flex flex-col items-center justify-center relative">
-              <div className="relative h-[600px] w-[300px] sm:w-[350px] md:w-[450px] max-w-sm bg-[#E0F7FA] rounded-[40px] p-4 shadow-xl overflow-hidden flex items-center justify-center">
+              <motion.div
+                initial={{ y: 200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="relative h-[600px] w-[300px] sm:w-[350px] md:w-[450px] max-w-sm bg-[#E0F7FA] rounded-[40px] p-4 shadow-xl overflow-hidden flex items-center justify-center"
+              >
                 {/* Inner container for cards and button to control their positioning */}
                 <div className="relative w-full h-full flex items-center justify-center">
                   {cards
@@ -134,7 +139,9 @@ const PayTogether = () => {
                       return (
                         <div
                           key={card.id}
-                          className={`absolute p-4 rounded-2xl shadow-lg border-2 bottom-[160px] transition-all duration-300 ease-out ${card.bg} ${card.border} ${zIndex} ${
+                          className={`absolute p-4 rounded-2xl shadow-lg border-2 bottom-[160px] transition-all duration-300 ease-out ${
+                            card.bg
+                          } ${card.border} ${zIndex} ${
                             startAnimation ? card.animationClass : ""
                           } ${cardClasses}`}
                           style={{
@@ -165,22 +172,22 @@ const PayTogether = () => {
                     PAY TOGETHER
                   </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
-       
+
         {/* 2️⃣ Section: Credit Report */}
         <section className="w-full py-32 rounded-b-[10%] bg-green-100 overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Line + Phone */}
             <motion.div
-              className="w-full lg:w-1/2 flex justify-center items-center"
+              className="w-full lg:w-1/2 flex justify-center items-center px-4 sm:px-6 md:px-8 lg:px-0"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="relative  w-[300px] md:w-2/3 lg:w-3/5 xl:w-1/2 aspect-[3/4] max-w-md mx-auto bg-white shadow-xl rounded-3xl p-7 flex flex-col items-start justify-start overflow-hidden">
+              <div className="relative w-[300px] md:w-2/3 lg:w-3/5 xl:w-1/2 aspect-[3/4] max-w-md mx-auto bg-white shadow-xl rounded-3xl p-7 flex flex-col items-start justify-start overflow-hidden">
                 {/* Snake Line */}
                 <motion.svg
                   viewBox="0 0 400 120"
@@ -238,7 +245,7 @@ const PayTogether = () => {
               </div>
             </motion.div>
             {/* Text */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <div className="w-full lg:w-1/2 text-center lg:text-left px-4 sm:px-6 md:px-8 lg:px-0">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -252,7 +259,7 @@ const PayTogether = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-gray-600 text-lg mb-6 max-w-md"
+                className="text-gray-600 text-lg mb-6 max-w-md mx-auto lg:mx-0"
               >
                 Dive deep with a free, detailed credit report. Understand your
                 credit standing and get actionable insights.
