@@ -83,7 +83,7 @@ const HeroSection = () => {
   return (
     <section
       ref={pinRef}
-      className="relative pt-6 h-screen overflow-hidden bg-gradient-to-b from-green-100 via-white to-white"
+      className="relative h-screen overflow-hidden bg-gradient-to-b from-green-100 via-white to-white"
       style={{
         maskImage: "linear-gradient(to bottom, black 90%, transparent 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, black 90%, transparent 100%)",
@@ -187,43 +187,43 @@ const HeroSection = () => {
               playsInline
               className="w-full h-full object-cover"
               style={{ 
-                opacity: 1 - scrollProgress * 3, // Fast fade out
-                transform: `scale(${1 - scrollProgress * 0.8}) translateY(${scrollProgress * 200}px)`
+                opacity: 1 - scrollProgress * 1.2,
+                transform: `scale(${1 - scrollProgress * 0.6}) translateY(${scrollProgress * 100}px)`
               }}
             />
           </motion.div>
 
-          {/* Left Card - Exact same fade as video */}
+          {/* Left Card - Same delay as right card */}
           <motion.div
             className="absolute rounded-[30px] overflow-hidden hidden md:block bg-[#00b050] w-full h-full z-10"
             initial={{ rotate: 0, scale: 0, opacity: 0, x: 0 }}
-            animate={{ rotate: -20, scale: 1, opacity: 0.8, x: -200, y: '5%' }}
+            animate={{ rotate: -20, scale: 1, opacity: 0.7, x: -200, y: '5%' }}
             transition={{ 
               delay: 2.0, // Same delay as right card
               duration: 1, 
               ease: "easeOut" 
             }}
             style={{
-              opacity: 0.7 * (1 - scrollProgress * 3), // Same fast fade as video
-              transform: `rotate(-20deg) scale(${1 - scrollProgress * 1}) translateX(-200px) translateY(${5 + scrollProgress * 200}px)`
+              opacity: 0.7 - scrollProgress * 0.7,
+              transform: `rotate(-20deg) scale(${1 - scrollProgress * 0.8}) translateX(-200px) translateY(5%)`
             }}
           >
             <img src={image1} alt="Green Card" className="w-full h-full object-cover object-top" />
           </motion.div>
 
-          {/* Right Card - Exact same fade as video */}
+          {/* Right Card - Same delay as left card */}
           <motion.div
             className="absolute rounded-[30px] overflow-hidden hidden md:block bg-[#4dd0e1] w-full h-full z-10"
             initial={{ rotate: 0, scale: 0, opacity: 0, x: 0 }}
             animate={{ rotate: 20, scale: 1, opacity: 0.7, x: 200, y: '5%' }}
             transition={{ 
-              delay: 2.0, // Same delay as left card
+              delay: 2.0, // Same delay as left card - NOW BOTH APPEAR TOGETHER
               duration: 1, 
               ease: "easeOut" 
             }}
             style={{
-              opacity: 0.7 * (1 - scrollProgress * 3), // Same fast fade as video
-              transform: `rotate(20deg) scale(${1 - scrollProgress * 1}) translateX(200px) translateY(${5 + scrollProgress * 200}px)`
+              opacity: 0.7 - scrollProgress * 0.7,
+              transform: `rotate(20deg) scale(${1 - scrollProgress * 0.8}) translateX(200px) translateY(5%)`
             }}
           >
             <img src={image2} alt="Sky Blue Card" className="w-full h-full object-cover object-top" />

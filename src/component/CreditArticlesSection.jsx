@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-
 const articles = [
   {
     title: "What is a good Credit Mix for your credit profile?",
@@ -29,23 +28,23 @@ const CreditArticlesSection = () => {
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
-  initial={{ opacity: 0, x: -100 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  transition={{ duration: 1, ease: "linear" }}
-  viewport={{ once: true }}
-  className="text-2xl text-black sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12"
->
-  Learn more about{" "}
-  <span className="text-red-400 font-bold">credit</span>
-</motion.h2>
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "linear" }}
+          viewport={{ once: true }}
+          className="text-2xl text-black sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12"
+        >
+          Learn more about{" "}
+          <span className="text-red-400 font-bold">credit</span>
+        </motion.h2>
 
-        {/* 🟡 Small Device Slider */}
-        <div className="block sm:hidden overflow-x-auto">
+        {/*  Small Device Slider */}
+        <div className="block sm:hidden overflow-x-auto scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-gray-200">
           <div className="flex gap-4 w-max px-1">
             {articles.map((item, index) => (
               <div
                 key={index}
-                className="min-w-[280px] max-w-[280px] flex-shrink-0 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col"
+                className="min-w-[280px] max-w-[280px] flex-shrink-0 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col p-4"
               >
                 <img
                   src={item.image}
@@ -82,18 +81,20 @@ const CreditArticlesSection = () => {
           </div>
         </div>
 
-        {/* 🟢 Grid for Medium and Larger Devices */}
-        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Grid for Medium and Larger Devices */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {articles.map((item, index) => (
             <div
               key={index}
-              className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col"
+              className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col p-4"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 md:h-56 object-cover"
-              />
+              <div className="w-full h-56 relative p-2"> {/* Added padding here */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-transform duration-300  hover:shadow-2xl" // Use absolute positioning
+                />
+              </div>
               <div className="p-5 space-y-3 text-left flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">
