@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 
 const articles = [
   {
@@ -26,10 +28,16 @@ const CreditArticlesSection = () => {
     <section className="w-full py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12">
-          Learn more about{" "}
-          <span className="text-red-400 font-bold">credit</span>
-        </h2>
+        <motion.h2
+  initial={{ opacity: 0, x: -100 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 1, ease: "linear" }}
+  viewport={{ once: true }}
+  className="text-2xl text-black sm:text-3xl md:text-4xl font-semibold mb-10 sm:mb-12"
+>
+  Learn more about{" "}
+  <span className="text-red-400 font-bold">credit</span>
+</motion.h2>
 
         {/* 🟡 Small Device Slider */}
         <div className="block sm:hidden overflow-x-auto">

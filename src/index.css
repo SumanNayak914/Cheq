@@ -7,12 +7,9 @@ body {
   overflow-x: hidden;
 }
 
-
 *{
 font-family: "Poppins", sans-serif;
 }
-
-
 
 .coin {
   position: absolute;
@@ -23,7 +20,7 @@ font-family: "Poppins", sans-serif;
   background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
   filter: blur(60px);
   z-index: -10;
-  pointer-events: none; /* ensures it doesn’t block clicks */
+  pointer-events: none; /* ensures it doesn't block clicks */
 }
 
 .gradi {
@@ -37,7 +34,6 @@ font-family: "Poppins", sans-serif;
   -webkit-backdrop-filter: blur(10px); 
 }
 
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -46,9 +42,7 @@ font-family: "Poppins", sans-serif;
   animation: float 3s ease-in-out infinite;
 }
 
-
-/* Scroll Animaion */
-
+/* Scroll Animation */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -67,74 +61,33 @@ font-family: "Poppins", sans-serif;
   animation: scroll-right 25s linear infinite;
 }
 
-
-/* Scroll Animaion end */
-
-
-/* This MUST be in your actual CSS file */
-
+/* Card Animations */
 @keyframes cardAnimationLg {
   0% { transform: translateY(0); }
-  25% { transform: translateY(50px); } /* Down */
-  50% { transform: translateY(-100px); } /* Up from original */
-  75% { transform: translateY(0); } /* Back to original */
+  25% { transform: translateY(50px); }
+  50% { transform: translateY(-100px); }
+  75% { transform: translateY(0); }
   100% { transform: translateY(0); }
 }
 
 @keyframes cardAnimationMd {
   0% { transform: translateY(0); }
-  25% { transform: translateY(30px); } /* Down (less than lg) */
-  50% { transform: translateY(-60px); } /* Up (less than lg) */
+  25% { transform: translateY(30px); }
+  50% { transform: translateY(-60px); }
   75% { transform: translateY(0); }
   100% { transform: translateY(0); }
 }
 
 @keyframes cardAnimationSm {
   0% { transform: translateY(0); }
-  25% { transform: translateY(15px); } /* Down (less than md) */
-  50% { transform: translateY(-30px); } /* Up (less than md) */
+  25% { transform: translateY(15px); }
+  50% { transform: translateY(-30px); }
   75% { transform: translateY(0); }
   100% { transform: translateY(0); }
 }
 
 .card-animate-lg {
-  animation: cardAnimationLg 2s ease-in-out 2 forwards; /* 2s duration, repeat 2 times, stay at end */
-}
-
-.card-animate-md {
-  animation: cardAnimationMd 2s ease-in-out 2 forwards;
-}
-
-.card-animate-sm {
-  animation: cardAnimationSm 2s ease-in-out 2 forwards;
-}
-/* Custom CSS for Card Animations */
-@keyframes cardAnimationLg {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(50px); } /* Down */
-  50% { transform: translateY(-100px); } /* Up from original */
-  75% { transform: translateY(0); } /* Back to original */
-  100% { transform: translateY(0); }
-}
-
-@keyframes cardAnimationMd {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(30px); } /* Down (less than lg) */
-  50% { transform: translateY(-60px); } /* Up (less than lg) */
-  75% { transform: translateY(0); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes cardAnimationSm {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(15px); } /* Down (less than md) */
-  50% { transform: translateY(-30px); } /* Up (less than md) */
-  75% { transform: translateY(0); }
-  100% { transform: translateY(0); }
-}
-
-.card-animate-lg {
-  animation: cardAnimationLg 2s ease-in-out 2 forwards; /* 2s duration, repeat 2 times, stay at end */
+  animation: cardAnimationLg 2s ease-in-out 2 forwards;
 }
 
 .card-animate-md {
@@ -145,32 +98,56 @@ font-family: "Poppins", sans-serif;
   animation: cardAnimationSm 2s ease-in-out 2 forwards;
 }
 
-/* Add or replace these in your global CSS file */
+/* Phone Wobble Animation */
 @keyframes phoneWobbleAnimation {
-  0% { transform: rotate(0deg); }   /* Start upright */
-  33% { transform: rotate(3deg); }  /* Tilt right slightly */
-  66% { transform: rotate(-3deg); } /* Tilt left slightly */
-  100% { transform: rotate(0deg); } /* Return to upright and stop */
+  0% { transform: rotate(0deg); }
+  33% { transform: rotate(3deg); }
+  66% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .phone-wobble {
-  animation: phoneWobbleAnimation 1s ease-in-out forwards; /* 1s duration, ease-in-out, runs once, stays at 100% state */
-  transform-origin: center center; /* Ensures rotation is around the center */
+  animation: phoneWobbleAnimation 1s ease-in-out forwards;
+  transform-origin: center center;
 }
 
+/* DoubleMarquee responsive styles */
+.double-marquee-container {
+  /* Default styles */
+}
 
+@media (max-width: 768px) {
+  .double-marquee-container {
+    /* Add your mobile-specific styles here */
+    font-size: 0.875rem; /* example */
+    padding: 0.5rem; /* example */
+  }
+}
 
+/* PayTogether responsive styles */
+.pay-together-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  /* Add your default styles here */
+}
 
+@media (min-width: 640px) {
+  .pay-together-container {
+    grid-template-columns: repeat(2, 1fr);
+    /* Add your sm breakpoint styles here */
+  }
+}
 
+@media (min-width: 768px) {
+  .pay-together-container {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem;
+    /* Add your md breakpoint styles here */
+  }
+}
 
-
-
-
-
-
-
-/* src/html.css */
-
+/* Video Background Styles */
 body, html {
   margin: 0;
   padding: 0;

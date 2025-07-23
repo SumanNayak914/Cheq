@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import zingbus from "../assets/brandlogos/zingbus.avif";
 import dominos from "../assets/brandlogos/Dominos.avif";
 import bookmyshow from "../assets/brandlogos/bookmyshow.avif";
@@ -8,297 +8,163 @@ import talkingsox from "../assets/brandlogos/tsox.avif";
 import cleo from "../assets/brandlogos/cleartrip.avif";
 
 const brands = [
-  { src: zingbus, name: "Zingbus", color: "#E6F7FF" },
-  { src: dominos, name: "Domino's", color: "#FFF0F6" },
-  { src: bookmyshow, name: "BookMyShow", color: "#F9F0FF" },
-  { src: gullak, name: "Gullak", color: "#F6FFED" },
-  { src: snitch, name: "Snitch", color: "#FFFBE6" },
-  { src: talkingsox, name: "Talking Sox", color: "#E8F5E9" },
-  { src: cleo, name: "Cleo", color: "#F0F5FF" },
+  { src: zingbus, name: "Zingbus", color: "bg-blue-50", width: 120 },
+  { src: dominos, name: "Domino's", color: "bg-pink-50", width: 140 },
+  { src: bookmyshow, name: "BookMyShow", color: "bg-purple-50", width: 160 },
+  { src: gullak, name: "Gullak", color: "bg-green-50", width: 100 },
+  { src: snitch, name: "Snitch", color: "bg-yellow-50", width: 110 },
+  { src: talkingsox, name: "Talking Sox", color: "bg-emerald-50", width: 130 },
+  { src: cleo, name: "Cleo", color: "bg-indigo-50", width: 90 },
 ];
 
 const DoubleMarquee = () => {
   const [isMobile, setIsMobile] = useState(false);
-
+  
   useEffect(() => {
-    const checkScreenSize = () => {
+    const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
     
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Triple brands for mobile infinite scroll
-  const mobileBrands = [...brands, ...brands, ...brands];
-  const desktopBrands = [...brands, ...brands];
+  const duplicatedBrands = [...brands, ...brands, ...brands];
 
   return (
-    <div style={styles.container}>
-      <div style={styles.heading} >
-        <h2 style={styles.title}>Exclusive Vouchers</h2>
-        <p style={styles.subtitle}>from Premium Brands</p>
+    <div className="w-full bg-white py-8 md:py-16 px-2 md:px-4">
+      {/* Heading */}
+      <div className="text-center mb-6 md:mb-8">
+        <h2 className="text-4xl md:text-4xl font-bold text-teal-500 mb-2">
+          Exclusive Vouchers
+        </h2>
+        <p className="text-xl md:text-xl font-semibold text-gray-900">
+          from Premium Brands
+        </p>
       </div>
 
-      {/* Desktop/Tablet: 2 Marquees */}
-      {!isMobile && (
-        <>
-          {/* Top Marquee - Left */}
-          <div style={styles.marqueeWrapper}>
-            <div style={styles.marqueeTrack("left")}>
-              {desktopBrands.map((brand, i) => (
-                <div key={`top-${i}`} className="marquee-card" style={{ ...styles.card(brand.color) }}>
-                  <img src={brand.src} alt={brand.name} style={styles.img} />
-                </div>
-              ))}
+      {/* First Marquee - Left */}
+      <div className="relative overflow-hidden w-full max-w-7xl mx-auto px-5 md:px-5">
+        <div className="flex gap-4 md:gap-4 animate-scroll-left">
+          {duplicatedBrands.map((brand, i) => (
+            <div 
+              key={`first-${i}`} 
+              className={`
+                ${brand.color} 
+                h-30 md:h-30 rounded-3xl md:rounded-3xl p-4 md:p-4
+                flex items-center justify-center shadow-sm transition-transform hover:scale-105 flex-shrink-0
+              `}
+              style={{
+                width: '200px',
+                minWidth: '200px'
+              }}
+            >
+              <img 
+                src={brand.src} 
+                alt={brand.name} 
+                className="max-h-10 md:max-h-10 max-w-[80%] w-auto object-contain"
+              />
             </div>
-            {/* Fade overlays */}
-            <div style={{...styles.fadeOverlay, ...styles.fadeLeft}}></div>
-            <div style={{...styles.fadeOverlay, ...styles.fadeRight}}></div>
-          </div>
-
-          {/* Bottom Marquee - Right */}
-          <div style={{ ...styles.marqueeWrapper, marginTop: "2rem" }}>
-            <div style={styles.marqueeTrack("right")}>
-              {desktopBrands.map((brand, i) => (
-                <div key={`bottom-${i}`} className="marquee-card" style={{ ...styles.card(brand.color) }}>
-                  <img src={brand.src} alt={brand.name} style={styles.img} />
-                </div>
-              ))}
-            </div>
-            {/* Fade overlays */}
-            <div style={{...styles.fadeOverlay, ...styles.fadeLeft}}></div>
-            <div style={{...styles.fadeOverlay, ...styles.fadeRight}}></div>
-          </div>
-        </>
-      )}
-
-      {/* Mobile: 3 Marquees with Slower Speed */}
-      {isMobile && (
-        <div style={{position: 'relative'}}>
-          {/* First Marquee - Left */}
-          <div style={{...styles.marqueeWrapper, overflow: 'visible', padding: '0'}}>
-            <div style={styles.marqueeTrack("left", "mobile")}>
-              {mobileBrands.map((brand, i) => (
-                <div key={`mobile-top-${i}`} className="marquee-card mobile-card" style={{ ...styles.mobileCard(brand.color) }}>
-                  <img src={brand.src} alt={brand.name} style={styles.mobileImg} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Second Marquee - Right */}
-          <div style={{ ...styles.marqueeWrapper, overflow: 'visible', padding: '0' }}>
-            <div style={styles.marqueeTrack("right", "mobile")}>
-              {mobileBrands.map((brand, i) => (
-                <div key={`mobile-middle-${i}`} className="marquee-card mobile-card" style={{ ...styles.mobileCard(brand.color) }}>
-                  <img src={brand.src} alt={brand.name} style={styles.mobileImg} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Third Marquee - Left */}
-          <div style={{ ...styles.marqueeWrapper, overflow: 'visible', padding: '0' }}>
-            <div style={styles.marqueeTrack("left", "mobile")}>
-              {mobileBrands.map((brand, i) => (
-                <div key={`mobile-bottom-${i}`} className="marquee-card mobile-card" style={{ ...styles.mobileCard(brand.color) }}>
-                  <img src={brand.src} alt={brand.name} style={styles.mobileImg} />
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Mobile Fade overlays - covering all three marquees */}
-          <div style={{
-            ...styles.fadeOverlay, 
-            ...styles.fadeLeft,
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            width: '80px'
-          }}></div>
-          <div style={{
-            ...styles.fadeOverlay, 
-            ...styles.fadeRight,
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            width: '80px'
-          }}></div>
+          ))}
         </div>
-      )}
+        {/* Fade overlays */}
+        <div className="absolute top-0 bottom-0 left-0 w-20 md:w-20 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-20 md:w-20 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+      </div>
 
-      {/* Style tag */}
-      <style>{`
-        @keyframes scrollLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+      {/* Second Marquee - Right */}
+      <div className="relative overflow-hidden w-full max-w-7xl mx-auto px-5 md:px-5 mt-6 md:mt-6">
+        <div className="flex gap-4 md:gap-4 animate-scroll-right">
+          {duplicatedBrands.map((brand, i) => (
+            <div 
+              key={`second-${i}`} 
+              className={`
+                ${brand.color} 
+                h-30 md:h-30 rounded-3xl md:rounded-3xl p-4 md:p-4
+                flex items-center justify-center shadow-sm transition-transform hover:scale-105 flex-shrink-0
+              `}
+              style={{
+                width: '200px',
+                minWidth: '200px'
+              }}
+            >
+              <img 
+                src={brand.src} 
+                alt={brand.name} 
+                className="max-h-10 md:max-h-10 max-w-[80%] w-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Fade overlays */}
+        <div className="absolute top-0 bottom-0 left-0 w-20 md:w-20 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-20 md:w-20 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+      </div>
 
-        @keyframes scrollRight {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
+      {/* Third Marquee - Left (only visible on mobile) */}
+      <div className="block md:hidden relative overflow-hidden w-full max-w-7xl mx-auto px-5 mt-6">
+        <div className="flex gap-4 animate-scroll-left">
+          {duplicatedBrands.map((brand, i) => (
+            <div 
+              key={`third-${i}`} 
+              className={`
+                ${brand.color} 
+                h-30 rounded-3xl p-4
+                flex items-center justify-center shadow-sm transition-transform hover:scale-105 flex-shrink-0
+              `}
+              style={{
+                width: '200px',
+                minWidth: '200px'
+              }}
+            >
+              <img 
+                src={brand.src} 
+                alt={brand.name} 
+                className="max-h-10 max-w-[80%] w-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Fade overlays */}
+        <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10"></div>
+      </div>
 
-        @keyframes mobileScrollLeft {
+      <style jsx>{`
+        @keyframes scroll-left {
           0% { transform: translateX(0); }
           100% { transform: translateX(-33.333%); }
         }
 
-        @keyframes mobileScrollRight {
+        @keyframes scroll-right {
           0% { transform: translateX(-33.333%); }
           100% { transform: translateX(0); }
         }
 
-        .marquee-card {
-          flex: 0 0 auto;
-          box-sizing: border-box;
+        .animate-scroll-left {
+          animation: scroll-left 25s linear infinite;
+          width: fit-content;
         }
 
-        /* Desktop Cards */
-        @media (min-width: 769px) {
-          .marquee-card {
-            flex: 0 0 20%;
+        .animate-scroll-right {
+          animation: scroll-right 25s linear infinite;
+          width: fit-content;
+        }
+
+        @media (min-width: 768px) {
+          .animate-scroll-left {
+            animation: scroll-left 45s linear infinite;
           }
-        }
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .marquee-card {
-            flex: 0 0 33.33%;
-          }
-        }
-
-        /* Mobile Cards */
-        .mobile-card {
-          flex: 0 0 150px !important;
-          margin-right: 15px;
-        }
-
-        @media (max-width: 480px) {
-          .mobile-card {
-            flex: 0 0 140px !important;
-            margin-right: 12px;
-          }
-        }
-
-        /* Mobile overflow fix */
-        @media (max-width: 768px) {
-          .marquee-wrapper-mobile {
-            overflow: visible !important;
-            padding: 0 !important;
+          .animate-scroll-right {
+            animation: scroll-right 45s linear infinite;
           }
         }
       `}</style>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    width: "100%",
-    backgroundColor: "#fff",
-    padding: "4rem 1rem",
-    boxSizing: "border-box",
-    overflow: "hidden",
-    position: "relative",
-  },
-  heading: {
-    textAlign: "center",
-    marginBottom: "2rem",
-  },
-  title: {
-    fontSize: "2.5rem",
-    fontWeight: "bold",
-    color: "#00c9a7",
-    margin: 0,
-  },
-  subtitle: {
-    fontSize: "1.5rem",
-    fontWeight: 600,
-    color: "#111",
-    marginTop: "0.5rem",
-  },
-  marqueeWrapper: {
-    position: "relative",
-    overflow: "hidden",
-    width: "100%",
-    maxWidth: "1280px",
-    margin: "0 auto",
-    padding: "0 20px",
-    "@media (max-width: 768px)": {
-      overflow: "visible",
-      padding: "0",
-    }
-  },
-  fadeOverlay: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    width: "100px",
-    zIndex: 2,
-    pointerEvents: "none",
-  },
-  fadeLeft: {
-    left: 0,
-    background: "linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)",
-  },
-  fadeRight: {
-    right: 0,
-    background: "linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%)",
-  },
-  marqueeTrack: (direction, device = "desktop") => {
-    // Mobile को slow करने के लिए 15s से 35s कर दिया
-    const speed = device === "mobile" ? "35s" : "25s";
-    const animation = device === "mobile" 
-      ? `${direction === "left" ? "mobileScrollLeft" : "mobileScrollRight"} ${speed} linear infinite`
-      : `${direction === "left" ? "scrollLeft" : "scrollRight"} ${speed} linear infinite`;
-    
-    return {
-      display: "flex",
-      gap: device === "mobile" ? "0" : "1.5rem",
-      animation: animation,
-      width: "fit-content",
-    };
-  },
-  card: (bgColor) => ({
-    height: "140px",
-    width: "100%",
-    backgroundColor: bgColor,
-    borderRadius: "3rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "1rem",
-    boxShadow: "0 0 10px rgba(0,0,0,0.05)",
-    transition: "transform 0.3s",
-  }),
-  mobileCard: (bgColor) => ({
-    height: "120px",
-    width: "100%",
-    backgroundColor: bgColor,
-    borderRadius: "2rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "0.5rem",
-    boxShadow: "0 0 8px rgba(0,0,0,0.08)",
-    transition: "transform 0.3s",
-    minWidth: "140px",
-  }),
-  img: {
-    maxHeight: "40px",
-    width: "auto",
-    objectFit: "contain",
-  },
-  mobileImg: {
-    maxHeight: "50px",
-    width: "auto",
-    objectFit: "contain",
-    maxWidth: "90px",
-  },
 };
 
 export default DoubleMarquee;
